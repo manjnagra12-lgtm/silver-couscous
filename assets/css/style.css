@@ -1,0 +1,172 @@
+/* ==========================================================================
+   STYLE.CSS: Controls all colors, sizing, cards, and phone responsiveness
+   ========================================================================== */
+
+/* 1. Global Color Palette (Change a color here to change it everywhere) */
+:root {
+  --bg-main: #0a0e17;                 /* Very dark blue page background */
+  --bg-card: rgba(19, 26, 42, 0.85);  /* Semi-transparent dark card background */
+  --bg-card-border: rgba(255, 255, 255, 0.12); /* Subtle card outline */
+  --accent-cyan: #00ff87;             /* Bright Premier League neon green */
+  --accent-gold: #ffbe0b;             /* Warning / Hint color */
+  --accent-red: #ff3366;              /* Strike / Wrong answer red */
+  --text-main: #f8fafc;               /* Clean white text */
+  --text-muted: #cbd5e1;              /* Easy-to-read light gray for subtitles */
+
+  /* Colors for player cards */
+  --slot-bg-hidden: rgba(15, 23, 42, 0.85);   /* Dark card before being guessed */
+  --slot-bg-revealed: rgba(0, 255, 135, 0.15);/* Light green card when correct */
+  --slot-border-revealed: #00ff87;             /* Neon green outline */
+  --slot-bg-missed: rgba(255, 51, 102, 0.2);  /* Light red card when missed */
+  --slot-border-missed: #ff3366;              /* Red outline */
+}
+
+/* 2. Main Page Background */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  /* Two smooth glow circles in opposite corners */
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(56, 0, 60, 0.5) 0px, transparent 50%),
+    radial-gradient(at 90% 90%, rgba(0, 255, 135, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* 3. Header and Text Styling */
+header {
+  background: rgba(10, 14, 23, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bg-card-border);
+}
+
+/* Gives the title a neon green-to-cyan gradient text effect */
+.brand-text {
+  background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light subtitle color so it's easy to read against dark backgrounds */
+.text-light-subtle {
+  color: #cbd5e1 !important;
+}
+
+/* Score and Strike pill badges */
+.badge-status {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+  border-radius: 50px;
+}
+
+/* Holds exact space for the season title so the page doesn't jump on load */
+#season-heading {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 4. The Guess Input Box */
+.form-glass {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.form-control-custom {
+  background-color: rgba(10, 14, 23, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+/* Neon outline when clicking inside the input box */
+.form-control-custom:focus {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 0.25rem rgba(0, 255, 135, 0.2) !important;
+}
+
+/* The Submit Button */
+.btn-action-submit {
+  background: linear-gradient(135deg, #00ff87 0%, #00b4d8 100%);
+  color: #0a0e17;
+  font-weight: 700;
+  border: none;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+/* 5. The 5 Player Cards */
+/* Saves room on screen so cards don't pop down unexpectedly */
+#slots-container {
+  min-height: 240px;
+}
+
+/* Base Card (Before you guess it) */
+.slot-card {
+  min-height: 105px;
+  background-color: var(--slot-bg-hidden);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+}
+
+/* Correct Guess: Turns green with a neon glow */
+.slot-card.revealed {
+  background-color: var(--slot-bg-revealed);
+  border: 1.5px solid var(--slot-border-revealed);
+  box-shadow: 0 0 20px rgba(0, 255, 135, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Missed Card: Turns red when round ends */
+.slot-card.missed {
+  background-color: var(--slot-bg-missed);
+  border: 1.5px solid var(--slot-border-missed);
+}
+
+/* The round number circle (#1, #2, etc.) */
+.rank-badge {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--accent-cyan);
+}
+
+.slot-card.revealed .rank-badge {
+  background: var(--accent-cyan);
+  color: #0a0e17;
+}
+
+.slot-card.missed .rank-badge {
+  background: var(--accent-red);
+  color: #ffffff;
+}
+
+/* Message feedback colors */
+.feedback-error { color: var(--accent-red); }
+.feedback-success { color: var(--accent-cyan); }
+.feedback-warning { color: var(--accent-gold); }
+
+/* 6. Phone Settings (Screen smaller than 576px) */
+@media (max-width: 576px) {
+  .slot-card {
+    min-height: 90px;
+    padding: 0.75rem !important;
+  }
+
+  .rank-badge {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 0.95rem;
+    margin-right: 0.75rem !important;
+  }
+}
