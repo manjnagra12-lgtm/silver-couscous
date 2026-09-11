@@ -1,6 +1,6 @@
 # Premier League Recall
 
-A lightweight browser game where players try to recall the top 5 goalscorers from a random Premier League season. The game is built with plain HTML, CSS, and JavaScript and runs directly in the browser.
+A lightweight browser game where players try to recall the top 5 goalscorers from a random Premier League season. The game is built with plain HTML, CSS, and JavaScript and runs directly in the browser on desktop, tablet, and mobile devices.
 
 ## What the game does
 - Shows a random Premier League season
@@ -10,6 +10,7 @@ A lightweight browser game where players try to recall the top 5 goalscorers fro
 - Allows a club hint for a lower score value
 - Tracks strikes and ends the round after 3 incorrect guesses
 - Reveals missed players and moves to the next season
+- Works responsively across different screen sizes and devices
 
 ## Basic user case scenarios
 
@@ -32,6 +33,8 @@ A football fan uses the game as a quick memory exercise for seasons such as 2011
 1. Download or clone the project.
 2. Open the project folder in a browser.
 3. Open the index.html file to start the game.
+
+The app is designed to be responsive, so it can be played on a laptop, tablet, or mobile phone without needing a separate version for each device.
 
 ## How we used AI
 This project used AI to help speed up the build process and improve the quality of the implementation. AI was used to:
@@ -96,4 +99,4 @@ AI was used as a development assistant to help create and validate the project, 
 - Bootstrap 5
 
 ## Notes
-This build is a static front-end game and does not require a backend or database setup.
+This build is a static front-end game and does not require a backend or database setup. It is built to be accessible and easy to use on any device, regardless of screen size.
