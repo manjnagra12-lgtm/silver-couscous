@@ -92,6 +92,25 @@ AI was used as a development assistant to help create and validate the project, 
 +--------------------------------------------------------------+
 ```
 
+## Why we split the JavaScript into a data file and script file
+This project uses two JavaScript files:
+- data.js contains the season data and player information
+- script.js contains the game logic, event handlers, scoring, and round flow
+
+This separation is useful because it keeps the project easier to maintain. The data file acts like a structured source of information, while the script file focuses on how that information is used in the game. This makes it simpler to update the player list or add new seasons without rewriting the logic. It also helps keep the code organised, clearer to read, and easier to debug when something goes wrong.
+
+### Advantages of this approach
+- Cleaner code structure: data and logic are kept in separate places
+- Easier updates: new players or seasons can be added to the data file without changing the game logic
+- Better maintenance: developers can work on the game rules without affecting the dataset
+- Reusability: the same data can be loaded into other scripts or future versions of the app
+- Improved readability: the project is easier for new developers to understand
+
+### What could go wrong if we did not separate them
+If all the data and logic were placed in one JavaScript file, the project could become harder to manage. It would be more difficult to find specific parts of the code, update player information, or fix logic errors without accidentally changing the data. The file could become long and cluttered, making the app harder to test, harder to scale, and more likely to contain bugs when making future changes.
+
+In a larger project, keeping data separate also helps with version control and collaboration, because one developer can update the dataset while another works on the game engine without creating unnecessary conflicts.
+
 ## Project stack
 - HTML
 - CSS
